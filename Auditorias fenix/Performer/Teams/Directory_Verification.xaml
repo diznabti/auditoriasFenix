@@ -1,0 +1,173 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Directory_Verification" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_directory" Type="InArgument(x:String)" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1196,2471</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Directory_Verification_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="verify if the directory has the correct form" DisplayName="Directory_Verification" sap:VirtualizedContainerService.HintSize="1176,2411" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="linkName" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsFolder1" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsFolder3" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsFolder2" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsFolder4" />
+      <Variable x:TypeArguments="x:Boolean" Name="sucess" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Entregables'" sap:VirtualizedContainerService.HintSize="1134,2292" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8e94eecc4b64c7a425a11b7060c9b10c" Selector="&lt;html app='chrome.exe' title='* Microsoft Teams' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1100,2146" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:Activate DelayBefore="{x:Null}" DelayMS="9000" DisplayName="Activate 'chrome.exe'" sap:VirtualizedContainerService.HintSize="1058,106" sap2010:WorkflowViewState.IdRef="Activate_1">
+              <ui:Activate.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="096026e80624a2f9c0f9acc26fdae304" Selector="&lt;html app='chrome.exe' title='* Microsoft Teams' /&gt;" WaitForReady="COMPLETE" />
+              </ui:Activate.Target>
+            </ui:Activate>
+            <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="1058,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_directory]" />
+            <ui:UiElementExists DisplayName="Element Exists 'DIV'" Exists="[sucess]" sap:VirtualizedContainerService.HintSize="1058,106" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="025165e1b5a1121c7d73e4dbd63ff608" Selector="&lt;html app='chrome.exe' title='* Microsoft Teams' /&gt;&lt;webctrl aaname='Microsoft Teams' parentid='outer-shell' tag='DIV' /&gt;" TimeoutMS="18000" WaitForReady="COMPLETE" />
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[sucess]" sap:VirtualizedContainerService.HintSize="1058,1663" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="813,1516" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:SetFocus DelayBefore="{x:Null}" DelayMS="9000" DisplayName="Set Focus 'DIV'" sap:VirtualizedContainerService.HintSize="771,106" sap2010:WorkflowViewState.IdRef="SetFocus_1">
+                    <ui:SetFocus.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="1afc4484bcb833175ef9676fc3eb0d05" Selector="&lt;webctrl aaname='Entregables' isleaf='1' parentid='page-content-wrapper' tag='DIV' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SetFocus.Target>
+                  </ui:SetFocus>
+                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="771,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="c21e4a2a859567f4f223f152a68425a5" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;messages-header&amp;gt;div&amp;gt;div&amp;gt;team-files&amp;gt;div&amp;gt;team-files-list&amp;gt;div&amp;gt;channel-files-bridge&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ol&amp;gt;li&amp;gt;span&amp;gt;div' isleaf='1' parentid='page-content-wrapper' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                    </ui:GetValue.Target>
+                    <ui:GetValue.Value>
+                      <OutArgument x:TypeArguments="x:String">[linkName]</OutArgument>
+                    </ui:GetValue.Value>
+                  </ui:GetValue>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="771,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[linkName.Split(&quot;-&quot;c)(0).TrimEnd]" />
+                  <If Condition="[in_TransactionItem.SpecificContent(&quot;peticion&quot;).ToString=linkName.Split(&quot;-&quot;c)(0).TrimEnd]" sap:VirtualizedContainerService.HintSize="771,1031" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="526,884" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:UiElementExists DisplayName="Element Exists 'BUTTON'" Exists="[existsFolder1]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="5cc0e17d78f14b1718d61af4224463ce" Selector="&lt;webctrl aaname='1. Estimaci?n ' parentid='page-content-wrapper' tag='BUTTON' type='button' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <ui:UiElementExists DisplayName="Element Exists 'BUTTON'" Exists="[existsFolder2]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="cffd0c9f461764fd19c8f40b1b1f0162" Selector="&lt;webctrl aaname='2. Documentaci?n Entrada ' parentid='page-content-wrapper' tag='BUTTON' type='button' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <ui:UiElementExists DisplayName="Element Exists 'BUTTON'" Exists="[existsFolder3]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b79598b9381fd3aa45bcb6afef81d190" Selector="&lt;webctrl aaname='3. Documentaci?n Salida ' parentid='page-content-wrapper' tag='BUTTON' type='button' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <ui:UiElementExists DisplayName="Element Exists 'BUTTON'" Exists="[existsFolder4]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="11cf3ab51b0f1328bb280a378dbf8de6" Selector="&lt;webctrl aaname='4. Pruebas ' parentid='page-content-wrapper' tag='BUTTON' type='button' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <If Condition="[existsFolder1 And existsFolder2 And existsFolder3 And existsFolder4]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If.Then>
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Continue other verifications" />
+                          </If.Then>
+                          <If.Else>
+                            <Throw Exception="[new BusinessRuleException(&quot;NC03.Estructura de carpetas incorrecta en Teams.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Throw Exception="[new BusinessRuleException(&quot;NC03.Estructura de carpetas incorrecta en Teams.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Throw Exception="[new BusinessRuleException(&quot;NC02.URL Teams Inaccesible.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>

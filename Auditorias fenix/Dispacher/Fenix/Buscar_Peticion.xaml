@@ -1,0 +1,262 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Buscar_Peticion" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_TransactionItem" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>749,2500</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Buscar_Peticion_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Search petitions in Fenix with the requested values" DisplayName="Buscar_Peticion" sap:VirtualizedContainerService.HintSize="729,2440" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:String[]" Name="estadoValues" />
+      <Variable x:TypeArguments="x:String" Name="pageNumber" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Web" sap:VirtualizedContainerService.HintSize="687,2321" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'FENIX Page'" sap:VirtualizedContainerService.HintSize="645,2229" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="86b136f4d2a1b9b7c0ca0a0a7f51351d" Selector="&lt;html app='chrome.exe' title='FENIX' /&gt;">
+        <ui:BrowserScope.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="611,2083" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="3000" DisplayName="Select Item 'SELECT'" sap:VirtualizedContainerService.HintSize="569,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[in_Config(&quot;peticionesTipo&quot;).ToString]">
+                <ui:SelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="8">
+                    <x:String>Todos</x:String>
+                    <x:String>Cesión de Personas</x:String>
+                    <x:String>Mantenimiento correctivo</x:String>
+                    <x:String>Mantenimiento evolutivo</x:String>
+                    <x:String>Soporte</x:String>
+                    <x:String>Sprint Agile</x:String>
+                  </scg:List>
+                </ui:SelectItem.Items>
+                <ui:SelectItem.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="40570fa075fb5c0f5f45490fa172d0ec" Selector="&lt;webctrl name='tipoPeticion' tag='SELECT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:SelectItem.Target>
+              </ui:SelectItem>
+              <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT'" sap:VirtualizedContainerService.HintSize="569,134" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[in_Config(&quot;gestionTipo&quot;).ToString]">
+                <ui:SelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="4">
+                    <x:String>Todos</x:String>
+                    <x:String>Gestión ACC</x:String>
+                    <x:String>Gestión Requerimiento</x:String>
+                  </scg:List>
+                </ui:SelectItem.Items>
+                <ui:SelectItem.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="72c6008af74b754f5b1a6b08d5b526eb" Selector="&lt;webctrl name='idFlujo' tag='SELECT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:SelectItem.Target>
+              </ui:SelectItem>
+              <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT  factoriaOID'" sap:VirtualizedContainerService.HintSize="569,134" sap2010:WorkflowViewState.IdRef="SelectItem_3" Item="[in_Config(&quot;peticionesCentro&quot;).ToString]">
+                <ui:SelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="32">
+                    <x:String>Todos</x:String>
+                    <x:String>Calidad España</x:String>
+                    <x:String>Calidad LATAM</x:String>
+                    <x:String>DMF Alicante</x:String>
+                    <x:String>DMF Lisboa</x:String>
+                    <x:String>DMF Murcia</x:String>
+                    <x:String>DMF Salamanca</x:String>
+                    <x:String>DMF Sevilla</x:String>
+                    <x:String>DMF Temuco</x:String>
+                    <x:String>DMF Tetuán</x:String>
+                    <x:String>DMF Trujillo</x:String>
+                    <x:String>DMF Tucuman</x:String>
+                    <x:String>DMF Uberlândia</x:String>
+                    <x:String>Grupo CGC</x:String>
+                    <x:String>Grupo Gestión</x:String>
+                    <x:String>Grupo Herramientas</x:String>
+                    <x:String>Grupo People</x:String>
+                  </scg:List>
+                </ui:SelectItem.Items>
+                <ui:SelectItem.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="073080a3d96577e00a20adf5e8530762" Selector="&lt;webctrl id='factoriaOID' tag='SELECT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:SelectItem.Target>
+              </ui:SelectItem>
+              <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT  lineaOID'" sap:VirtualizedContainerService.HintSize="569,134" sap2010:WorkflowViewState.IdRef="SelectItem_4" Item="[in_Config(&quot;peticionesLínea&quot;).ToString]">
+                <ui:SelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="64">
+                    <x:String>Todos</x:String>
+                    <x:String>L. Banc Sabadell</x:String>
+                    <x:String>L. Banco Popular</x:String>
+                    <x:String>L. BANKINTER</x:String>
+                    <x:String>L. CoE Sisnet</x:String>
+                    <x:String>L. Comisión Europea</x:String>
+                    <x:String>L. Contratación Anticipada</x:String>
+                    <x:String>L. Enagas</x:String>
+                    <x:String>L. Endesa</x:String>
+                    <x:String>L. ENDESA S SS</x:String>
+                    <x:String>L. EPO SYT DOCX</x:String>
+                    <x:String>L. Estructura</x:String>
+                    <x:String>L. European Patent Office</x:String>
+                    <x:String>L. Everilion</x:String>
+                    <x:String>L. everis</x:String>
+                    <x:String>L. everis centers</x:String>
+                    <x:String>L. Isban</x:String>
+                    <x:String>L. ISH</x:String>
+                    <x:String>L. JLL</x:String>
+                    <x:String>L. Lagun Aro</x:String>
+                    <x:String>L. Mapfre</x:String>
+                    <x:String>L. Mutua Madrileña</x:String>
+                    <x:String>L. NOVARTIS</x:String>
+                    <x:String>L. OEPM</x:String>
+                    <x:String>L. Pool</x:String>
+                    <x:String>L. Renfe</x:String>
+                    <x:String>L. RPA</x:String>
+                    <x:String>L. SAP</x:String>
+                    <x:String>L. SAS</x:String>
+                    <x:String>L. SCF Benelux</x:String>
+                    <x:String>L. Testing</x:String>
+                    <x:String>L. UE Court of Justice</x:String>
+                    <x:String>L. Vodafone</x:String>
+                    <x:String>L. WIPO</x:String>
+                    <x:String>L. WIPO ePCT</x:String>
+                  </scg:List>
+                </ui:SelectItem.Items>
+                <ui:SelectItem.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5c89f930ae1383d0899f7ef12fdb83e1" Selector="&lt;webctrl id='lineaOID' tag='SELECT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:SelectItem.Target>
+              </ui:SelectItem>
+              <ui:SetValue ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'INPUT  fechaEntregaDesde'" sap:VirtualizedContainerService.HintSize="569,134" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[CDate(in_Config(&quot;fechaEntregaDesde&quot;).ToString).ToString(&quot;dd/MM/yyyy&quot;)]">
+                <ui:SetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="86c4978e09b678b93f924481a6606c96" Selector="&lt;webctrl id='fechaEntregaDesde' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:SetValue.Target>
+              </ui:SetValue>
+              <ui:SetValue ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'INPUT  fechaEntregaHasta'" sap:VirtualizedContainerService.HintSize="569,134" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[CDate(in_Config(&quot;fechaEntregaHasta&quot;).ToString).ToString(&quot;dd/MM/yyyy&quot;)]">
+                <ui:SetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0d6eb525138f63727c894553aab5e6b5" Selector="&lt;webctrl id='fechaEntregaHasta' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:SetValue.Target>
+              </ui:SetValue>
+              <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:String[]">[estadoValues]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:String[]">[in_Config("peticionesEstado").ToString.Split(";"c)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="569,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[estadoValues.Count.ToString]" />
+              <ui:SelectMultipleItems ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Multiple Items 'SELECT  estado'" sap:VirtualizedContainerService.HintSize="569,106" sap2010:WorkflowViewState.IdRef="SelectMultipleItems_1" MultipleItems="[estadoValues]">
+                <ui:SelectMultipleItems.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2f1af1394933423cc5631497b131e915" Selector="&lt;webctrl id='estado' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:SelectMultipleItems.Target>
+              </ui:SelectMultipleItems>
+              <ui:Click DelayBefore="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="6000" DisplayName="Click 'SPAN'" sap:VirtualizedContainerService.HintSize="569,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="cdeedea924de851f5b7e16c376c9a3c4" Selector="&lt;webctrl parentid='buscar_label' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  _idPaginatorInfo...'" sap:VirtualizedContainerService.HintSize="569,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2dbce77169c33f50d5531b186524baa5" Selector="&lt;webctrl id='_idPaginatorInfoTotalPages' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="x:String">[pageNumber]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="569,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[pageNumber]" />
+              <If Condition="[pageNumber=&quot;0&quot;]" sap:VirtualizedContainerService.HintSize="569,207" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_TransactionItem]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_TransactionItem]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[pageNumber]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
+            </Sequence>
+          </ActivityAction>
+        </ui:BrowserScope.Body>
+      </ui:BrowserScope>
+    </Sequence>
+  </Sequence>
+</Activity>
